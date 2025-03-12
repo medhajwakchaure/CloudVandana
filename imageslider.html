@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        img {
+            width: 400px;
+            height: 300px;
+            border-radius: 10px;
+        }
+        .slider-container {
+            position: relative;
+            display: inline-block;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Image Slider</h2>
+    <div class="slider-container">
+        <img id="slider" src="" alt="Image Slider">
+    </div>
+    <br>
+    <button onclick="prevImage()">Previous</button>
+    <button onclick="nextImage()">Next</button>
+
+    <script>
+        const images = [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwZZJmlZJdlRrWRyMzmwiNJtrass_vP3Axaw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvj32A6T4RNrxvTZEbZCGqfriKUnL_jitmfnv6UxU1FE8QSoVH7zZKnRH3M5nqDrYEcGc&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu8XuXTLzr8agOHz89iLoD0jjua30i94LOZEIIv114AwYRHrl-gwbqvc26H2X8P9jislk&usqp=CAU"
+        ];
+        
+        let currentIndex = 0;
+        const slider = document.getElementById("slider");
+        
+        function updateImage() {
+            slider.src = images[currentIndex];
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+        
+        
+        updateImage();
+    </script>
+</body>
+</html>
